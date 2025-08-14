@@ -1,251 +1,120 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ReConnect - Personal Life Organizer</title>
-    <link rel="stylesheet" href="style.css">
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <title>ReConnect App</title>
+    <link rel="stylesheet" href="10hstyle.css">
 </head>
 <body>
-    <div class="app-container">
+    <div class="container">
         <!-- Header -->
-        <header class="header">
-            <div class="header-content">
-                <div class="reconnect-banner">
-                    <div class="dotted-text">
-                        <span class="letter">
-                            <span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><br>
-                            <span class="dot"></span><span class="dot"></span><span class="dot"></span><br>
-                            <span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><br>
-                            <span class="dot"></span><br>
-                            <span class="dot"></span>
-                        </span>
-                        <span class="letter">
-                            <span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><br>
-                            <span class="dot"></span><br>
-                            <span class="dot"></span><span class="dot"></span><span class="dot"></span><br>
-                            <span class="dot"></span><br>
-                            <span class="dot"></span>
-                        </span>
-                        <span class="letter">
-                            <span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><br>
-                            <span class="dot"></span><br>
-                            <span class="dot"></span><span class="dot"></span><span class="dot"></span><br>
-                            <span class="dot"></span><br>
-                            <span class="dot"></span>
-                        </span>
-                        <span style="margin: 0 8px; color: var(--color-accent);">RECONNECT</span>
-                    </div>
-                </div>
-                
-                <nav class="nav-tabs">
-                    <button class="nav-tab active" data-tab="dashboard">Home</button>
-                    <button class="nav-tab" data-tab="tasks">Tasks</button>
-                    <button class="nav-tab" data-tab="habits">Habits</button>
-                    <button class="nav-tab" data-tab="rewards">Rewards</button>
-                </nav>
-                
-                <div class="user-profile">
-                    <div class="user-stats">
-                        <div class="user-level">Level <span id="userLevel">1</span></div>
-                        <div class="user-xp"><span id="userXP">0</span> / <span id="userXPNext">100</span> XP</div>
-                    </div>
-                    <div class="user-avatar" id="userAvatar">U</div>
-                </div>
+        <div class="header">
+            <h1>RECONNECT</h1>
+            
+            <div class="nav">
+                <button class="nav-button active" onclick="showTab('dashboard')">Home</button>
+                <button class="nav-button" onclick="showTab('tasks')">Tasks</button>
             </div>
-        </header>
+            
+            <div class="user-info">
+                <div>Level: <span id="user-level">1</span></div>
+                <div>XP: <span id="user-xp">0</span>/<span id="next-level-xp">100</span></div>
+            </div>
+        </div>
         
-        <!-- Main Content -->
-        <main class="main-content">
-            <!-- Dashboard Tab -->
-            <div class="tab-content active" id="dashboard-tab">
-                <div class="dashboard-grid">
-                    <!-- Stats Column -->
-                    <div class="clean-card">
-                        <div class="content-spacing">
-                            <h2 class="section-title" style="margin-bottom: 1.5rem;">Your Progress</h2>
-                            
-                            <div class="stats-grid">
-                                <div class="stat-card clean-card">
-                                    <div class="stat-number" id="todayXP">0</div>
-                                    <div class="stat-label">XP Today</div>
-                                </div>
-                                <div class="stat-card clean-card">
-                                    <div class="stat-number" id="completedTasks">0</div>
-                                    <div class="stat-label">Tasks Done</div>
-                                </div>
-                                <div class="stat-card clean-card">
-                                    <div class="stat-number" id="currentStreak">0</div>
-                                    <div class="stat-label">Day Streak</div>
-                                </div>
-                                <div class="stat-card clean-card">
-                                    <div class="stat-number" id="totalCredits">0</div>
-                                    <div class="stat-label">Credits</div>
-                                </div>
-                            </div>
-                            
-                            <div style="margin-top: 2rem;">
-                                <h3 style="margin-bottom: 1rem; color: var(--text-primary);">Level Progress</h3>
-                                <div class="progress-bar">
-                                    <div class="progress-fill" id="levelProgress" style="width: 0%"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Activity Column -->
-                    <div class="clean-card">
-                        <div class="content-spacing">
-                            <h2 class="section-title">Recent Activity</h2>
-                            <div id="recentActivity" style="margin-top: 1.5rem;">
-                                <p class="empty-state" style="text-align: center; padding: 2rem;">Complete your first task to see activity here!</p>
-                            </div>
-                            
-                            <div style="margin-top: 2rem;">
-                                <h3 style="margin-bottom: 1rem; color: var(--text-primary);">Quick Start</h3>
-                                <div style="display: flex; flex-direction: column; gap: 0.75rem;">
-                                    <button class="btn btn-primary" onclick="showModal('taskModal')">Add Task</button>
-                                    <button class="btn btn-primary" onclick="showModal('habitModal')">New Habit</button>
-                                    <button class="btn btn-secondary" onclick="switchTab('rewards')">View Rewards</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+        <!-- Dashboard -->
+        <div class="tab-content" id="dashboard">
+            <h2>Your Progress</h2>
+            
+            <div class="stats-box">
+                <div class="stat">
+                    <div id="today-xp">0</div>
+                    <div>XP Today</div>
+                </div>
+                <div class="stat">
+                    <div id="tasks-done">0</div>
+                    <div>Tasks Done</div>
+                </div>
+                <div class="stat">
+                    <div id="streak">0</div>
+                    <div>Day Streak</div>
+                </div>
+                <div class="stat">
+                    <div id="credits">0</div>
+                    <div>Credits</div>
                 </div>
             </div>
             
-            <!-- Tasks Tab -->
-            <div class="tab-content" id="tasks-tab">
-                <div class="section-header">
-                    <h2 class="section-title">My Tasks</h2>
-                    <button class="btn btn-primary" onclick="showModal('taskModal')">Add Task</button>
-                </div>
-                
-                <div class="clean-card">
-                    <div class="content-spacing">
-                        <div class="nav-tabs" style="margin-bottom: 2rem;">
-                            <button class="nav-tab active" data-category="all">All</button>
-                            <button class="nav-tab" data-category="personal">Personal</button>
-                            <button class="nav-tab" data-category="health">Health</button>
-                            <button class="nav-tab" data-category="work">Work</button>
-                            <button class="nav-tab" data-category="learning">Learning</button>
-                        </div>
-                        
-                        <div class="task-list" id="taskList">
-                            <!-- Tasks will be populated here -->
-                        </div>
-                    </div>
+            <h3>Level Progress</h3>
+            <div class="progress-bar">
+                <div class="progress-fill" id="level-progress"></div>
+            </div>
+            
+            <div class="activity-box">
+                <h3>Recent Activity</h3>
+                <div id="activity-list">
+                    <p>Complete tasks to see activity here!</p>
                 </div>
             </div>
             
-            <!-- Habits Tab -->
-            <div class="tab-content" id="habits-tab">
-                <div class="section-header">
-                    <h2 class="section-title">My Habits</h2>
-                    <button class="btn btn-primary" onclick="showModal('habitModal')">Add Habit</button>
-                </div>
-                
-                <div class="habit-grid" id="habitGrid">
-                    <!-- Habits will be populated here -->
-                </div>
+            <div class="quick-buttons">
+                <button onclick="openTaskForm()">Add Task</button>
+            </div>
+        </div>
+        
+        <!-- Tasks -->
+        <div class="tab-content hidden" id="tasks">
+            <h2>My Tasks</h2>
+            <button onclick="openTaskForm()">Add New Task</button>
+            
+            <div class="filter-buttons">
+                <button class="filter active" onclick="filterTasks('all')">All</button>
+                <button class="filter" onclick="filterTasks('personal')">Personal</button>
+                <button class="filter" onclick="filterTasks('work')">Work</button>
+                <button class="filter" onclick="filterTasks('health')">Health</button>
             </div>
             
-            <!-- Rewards Tab -->
-            <div class="tab-content" id="rewards-tab">
-                <div class="section-header">
-                    <h2 class="section-title">Rewards Store</h2>
-                    <div class="credits-display"><span id="rewardsCredits">0</span> Credits</div>
-                </div>
-                
-                <div class="rewards-grid" id="rewardsGrid">
-                    <!-- Rewards will be populated here -->
-                </div>
+            <div id="task-list">
+                <!-- Tasks will appear here -->
             </div>
-        </main>
+        </div>
     </div>
     
-    <!-- Task Modal -->
-    <div class="modal" id="taskModal">
-        <div class="modal-content">
-            <h2 style="margin-bottom: 1.5rem; color: var(--text-primary);">Add New Task</h2>
-            <form id="taskForm">
-                <div class="form-group">
-                    <label class="form-label">What do you want to accomplish?</label>
-                    <input type="text" class="form-input" id="taskTitle" placeholder="e.g., Go for a 20-minute walk" required>
+    <!-- Task Form Popup -->
+    <div id="task-form-popup" class="popup hidden">
+        <div class="popup-content">
+            <h3>Add New Task</h3>
+            <form id="task-form">
+                <div>
+                    <label>Task Description:</label>
+                    <input type="text" id="task-input" required>
                 </div>
-                
-                <div class="form-group">
-                    <label class="form-label">Category</label>
-                    <select class="form-select" id="taskCategory">
+                <div>
+                    <label>Category:</label>
+                    <select id="task-category">
                         <option value="personal">Personal</option>
-                        <option value="health">Health & Fitness</option>
                         <option value="work">Work</option>
+                        <option value="health">Health</option>
                         <option value="learning">Learning</option>
-                        <option value="home">Home</option>
                     </select>
                 </div>
-                
-                <div class="form-group">
-                    <label class="form-label">How challenging is this?</label>
-                    <select class="form-select" id="taskDifficulty">
+                <div>
+                    <label>Difficulty:</label>
+                    <select id="task-difficulty">
                         <option value="easy">Easy (10-25 XP)</option>
                         <option value="medium">Medium (25-50 XP)</option>
                         <option value="hard">Hard (50-100 XP)</option>
                     </select>
                 </div>
-                
-                <div style="display: flex; gap: 1rem; margin-top: 2rem;">
-                    <button type="submit" class="btn btn-primary">Create Task</button>
-                    <button type="button" class="btn btn-secondary" onclick="hideModal('taskModal')">Cancel</button>
+                <div class="form-buttons">
+                    <button type="submit">Add Task</button>
+                    <button type="button" onclick="closeTaskForm()">Cancel</button>
                 </div>
             </form>
         </div>
     </div>
     
-    <!-- Habit Modal -->
-    <div class="modal" id="habitModal">
-        <div class="modal-content">
-            <h2 style="margin-bottom: 1.5rem; color: var(--text-primary);">Create New Habit</h2>
-            <form id="habitForm">
-                <div class="form-group">
-                    <label class="form-label">What habit do you want to build?</label>
-                    <input type="text" class="form-input" id="habitName" placeholder="e.g., Drink 8 glasses of water" required>
-                </div>
-                
-                <div class="form-group">
-                    <label class="form-label">Choose an icon</label>
-                    <select class="form-select" id="habitIcon">
-                        <option value="Exercise">Exercise</option>
-                        <option value="Water">Hydration</option>
-                        <option value="Books">Reading</option>
-                        <option value="Zen">Meditation</option>
-                        <option value="Sun">Early Rise</option>
-                        <option value="Food">Healthy Eating</option>
-                        <option value="Write">Journaling</option>
-                        <option value="Walk">Walking</option>
-                    </select>
-                </div>
-                
-                <div class="form-group">
-                    <label class="form-label">Goal Duration</label>
-                    <select class="form-select" id="habitTarget">
-                        <option value="7">1 Week (Getting Started)</option>
-                        <option value="21">21 Days (Habit Building)</option>
-                        <option value="30">30 Days (Monthly Challenge)</option>
-                        <option value="90">90 Days (Life Change)</option>
-                    </select>
-                </div>
-                
-                <div style="display: flex; gap: 1rem; margin-top: 2rem;">
-                    <button type="submit" class="btn btn-primary">Create Habit</button>
-                    <button type="button" class="btn btn-secondary" onclick="hideModal('habitModal')">Cancel</button>
-                </div>
-            </form>
-        </div>
-    </div>
-    
-    <script src="script.js"></script>
+    <script src="10hscript.js"></script>
 </body>
 </html>
