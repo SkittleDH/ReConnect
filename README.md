@@ -21,7 +21,8 @@ ReConnect uses a game system that keeps tasks interesting, so users stay hooked 
 
 ---
 
-Demo Link: https://skittledh.github.io/ReConnect/
+## Demo Link
+https://skittledh.github.io/ReConnect/
 
 ---
 
