@@ -22,9 +22,8 @@ ReConnect uses a game system that keeps tasks interesting, so users stay hooked 
 ---
 
 ## Demo Links
-https://skittledh.github.io/ReConnect/
-+
-re-connect-three.vercel.app
+
+[re-connect-three.vercel.app](https://re-connect-three.vercel.app/)
 
 ---
 
