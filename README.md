@@ -1,6 +1,6 @@
 ![image alt](https://github.com/SkittleDH/ReConnect/blob/b9ab8f5cbe5557f0a2d46580964c495008646e52/Banner%20Reconnect.png)
 
-A Rust-powered app that turns everyday tasks into a fun, engaging game 🎮 — helping you turn motivation 💪 into lasting discipline 🛡️.
+A Web-App app that turns everyday tasks into a fun, engaging game 🎮 — helping you turn motivation 💪 into lasting discipline 🛡️.
 
 ---
 
